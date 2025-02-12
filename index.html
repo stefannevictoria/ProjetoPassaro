@@ -26,19 +26,21 @@
         width: 800,  // Largura da tela do jogo
         height: 600,  // Altura da tela do jogo
 
-        scene: {
-            preload: preload,  // 
-            create: create,
-            update: update
+        scene: {  // Define as funções principais do jogo
+            preload: preload,  // Carrega os arquivos 
+            create: create,  // Cria os elemntos na tela
+            update: update  // Atualiza o jogo o tempo todo
         }
     };
 
     var game = new Phaser.Game(config);
 
+    // Carrega os arquivos necessários
     function preload() {
         this.load.image('bg', 'assets/bg_space.png');
     }
 
+    // Adiciona os elemntos na tela
     function create() {
         this.add.image(400, 300, 'bg').setScale(1.2);
     }
