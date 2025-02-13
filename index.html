@@ -38,7 +38,7 @@
     // Carrega os arquivos necessários
     function preload() {
         this.load.image('bg', 'assets/bg_natureza.png');
-        this.load.spritesheet('bird', 'assets/pássaro.png', {frameWidth: 165, frameHeight: 160});
+        this.load.spritesheet('bird', 'assets/pássaro.png', {frameWidth: 130, frameHeight: 160});
     }
 
     // Adiciona os elemntos na tela
@@ -49,7 +49,7 @@
 
         this.anims.create ({
             key: 'fly',
-            frames: this.anims.generateFrameNumbers('bird', {start: 0, end: 9}),
+            frames: this.anims.generateFrameNumbers('bird', {start: 0, end: 7}),
             frameRate: 10,
             repeat: -1
         });
@@ -59,7 +59,25 @@
 
     function update() { 
 
-        
+        if (passarinho.x === 100) {
+            passarinho.setFlip(false, false);
+            passarinho.ida = true;
+        }
+
+        if (passarinho.x < 700 && passarinho.ida === true) {
+            console.log("o que acontece?");
+            passarinho.x += 5;
+        }
+
+        if (passarinho.x === 700) {
+            passarinho.setFlip(true, false);
+            passarinho.ida = false;
+        }
+
+        if (passarinho.x > 100 && passarinho.ida === false) {
+            console.log("e o que acontece agora?");
+            passarinho.x -= 5; 
+        }
 
     }
 
