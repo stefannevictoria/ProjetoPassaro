@@ -38,7 +38,11 @@
     // Carrega os arquivos necessários
     function preload() {
         this.load.image('bg', 'assets/bg_natureza.png');
-        this.load.spritesheet('bird', 'assets/pássaro.png', {frameWidth: 130, frameHeight: 160});
+        this.load.spritesheet('bird', 'assets/pássaro.png', {
+            frameWidth: 128, 
+            frameHeight: 171, 
+
+        });
     }
 
     // Adiciona os elemntos na tela
@@ -49,8 +53,8 @@
 
         this.anims.create ({
             key: 'fly',
-            frames: this.anims.generateFrameNumbers('bird', {start: 0, end: 7}),
-            frameRate: 10,
+            frames: this.anims.generateFrameNumbers('bird', {start: 0, end: 8}),
+            frameRate: 5,
             repeat: -1
         });
 
