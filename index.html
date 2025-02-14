@@ -66,12 +66,14 @@
     }
 
     function update() { 
+
         let larguraTela = this.sys.game.config.width; // Largura da tela
         let alturaTela = this.sys.game.config.height; // Altura da tela
 
         // Definindo os limites para o movimento vertical
         let limiteSuperior = 100; // Até onde o pássaro pode subir
         let limiteInferior = alturaTela - 100; // Até onde o pássaro pode descer
+
 
         // Movimento horizontal
         if (passarinho.x <= 100) {
@@ -93,17 +95,17 @@
 
         // Movimento vertical
         if (passarinho.y <= limiteSuperior) { 
-            passarinho.subindo = false; // Quando chega no topo, começa a descer
+            passarinho.subindo = false; // Quando chega no topo, o pássaro começa a descer
         }
 
         if (passarinho.y >= limiteInferior) { 
-            passarinho.subindo = true; // Quando chega embaixo, começa a subir
+            passarinho.subindo = true; // Quando chega embaixo, o pássaro começa a subir
         }
 
         if (passarinho.subindo) { 
-            passarinho.y -= 3; // Sobe
+            passarinho.y -= 3; // Pássaro obe
         } else { 
-            passarinho.y += 3; // Desce
+            passarinho.y += 3; // Pássaro desce
         }
 
     }
