@@ -47,6 +47,7 @@
 
     // Adiciona os elemntos na tela
     function create() {
+
         // Corrige o fundo para ocupar toda a tela
         let bg = this.add.image(0, 0, 'bg').setOrigin(0, 0);
         bg.displayWidth = this.sys.game.config.width;
@@ -65,22 +66,44 @@
     }
 
     function update() { 
-        let larguraTela = this.sys.game.config.width; // Pega a largura da tela dinamicamente
+        let larguraTela = this.sys.game.config.width; // Largura da tela
+        let alturaTela = this.sys.game.config.height; // Altura da tela
 
+        // Definindo os limites para o movimento vertical
+        let limiteSuperior = 100; // Até onde o pássaro pode subir
+        let limiteInferior = alturaTela - 100; // Até onde o pássaro pode descer
+
+        // Movimento horizontal
         if (passarinho.x <= 100) {
             passarinho.setFlip(false, false);
             passarinho.ida = true;
         }
 
         if (passarinho.x >= larguraTela - 100) {
-            passarinho.setFlip(true, false);
+            passarinho.setFlip(true, false); // Imagem do pássaro refletida
             passarinho.ida = false;
         }
 
         if (passarinho.ida === true) {
-            passarinho.x += 5;
+            passarinho.x += 5; // Pássaro vai para a direira
         } else {
-            passarinho.x -= 5;
+            passarinho.x -= 5;  // Pássaro vai para a esquerda
+        }
+
+
+        // Movimento vertical
+        if (passarinho.y <= limiteSuperior) { 
+            passarinho.subindo = false; // Quando chega no topo, começa a descer
+        }
+
+        if (passarinho.y >= limiteInferior) { 
+            passarinho.subindo = true; // Quando chega embaixo, começa a subir
+        }
+
+        if (passarinho.subindo) { 
+            passarinho.y -= 3; // Sobe
+        } else { 
+            passarinho.y += 3; // Desce
         }
 
     }
